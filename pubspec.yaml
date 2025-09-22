@@ -1,5 +1,5 @@
-name: flutter_starter_project
-description: A new Flutter project
+name: drinkwell_balance_checker
+description: A Flutter app to check Drinkwell water ATM card balance by reference number, mobile number or card number.
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -25,11 +25,4 @@ dependencies:
   shared_preferences: ^2.2.2
 
   # For animations
-  flutter_animate: ^4.2.0
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-flutter:
-  uses-material-design: true
+  flutter_animate: ^4.2.
