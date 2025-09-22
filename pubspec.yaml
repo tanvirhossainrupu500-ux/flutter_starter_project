@@ -11,7 +11,21 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # UI related packages
   cupertino_icons: ^1.0.2
+  google_fonts: ^6.1.0
+
+  # State management
+  provider: ^6.0.5
+
+  # For API requests
+  http: ^0.13.6
+
+  # For local storage
+  shared_preferences: ^2.2.2
+
+  # For animations
+  flutter_animate: ^4.2.0
 
 dev_dependencies:
   flutter_test:
