@@ -1,4 +1,4 @@
-name: Flutter Android Build
+name: flutter Android Build
 
 on:
   push:
@@ -19,30 +19,30 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
           distribution: 'temurin'
+          java-version: '17'
 
       # 3. Setup Flutter
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0' # আপনার Flutter version অনুযায়ী পরিবর্তন করবেন
-
+          flutter-version: '3.19.0' # আপনার Flutter version অনুযায়ী পরিবর্তন করুন
+          
       # 4. Install dependencies
       - name: Install dependencies
         run: flutter pub get
 
-      # 5. Run tests (optional, চাইলে বাদ দিতে পারেন)
+      # 5. Run tests (optional, পুলিশে কাম নিয়েও পারবেন)
       - name: Run tests
         run: flutter test
 
       # 6. Build APK
       - name: Build APK
         run: flutter build apk --release
-uses: actions/upload-artifact@v4
-      # 7. Upload APK artifact (ডাউনলোড করার জন্য)
-      - name: Upload APK
-        uses: actions/upload-artifact@v
+
+      # 7. Upload APK artifact (আর্টিফ্যাক্ট সেভ করার জন্য)
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4 # ভার্সন v4-এ আপডেট করা হলো
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
