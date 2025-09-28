@@ -1,1 +1,48 @@
+name: Flutter Android Build
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      # 2. Setup Java (Android build এর জন্য দরকার)
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # 3. Setup Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0' # আপনার Flutter version অনুযায়ী পরিবর্তন করবেন
+
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 5. Run tests (optional, চাইলে বাদ দিতে পারেন)
+      - name: Run tests
+        run: flutter test
+
+      # 6. Build APK
+      - name: Build APK
+        run: flutter build apk --release
+
+      # 7. Upload APK artifact (ডাউনলোড করার জন্য)
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
